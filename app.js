@@ -11,6 +11,8 @@ app.use(
     extended: true,
   })
 );
+app.use(express.static("public"));
+
 app.use("/site", siteRouter);
 app.use("/scrapedEntity", ScrapedEntityRouter);
 

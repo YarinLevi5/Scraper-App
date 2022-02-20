@@ -39,7 +39,43 @@ let getSite = (siteId) => {
   });
 };
 
+let getAllSites = () => {
+  return new Promise((resolve, reject) => {
+    Site.find()
+      .then((sites) => resolve(sites))
+      .catch((err) => reject(err));
+  });
+};
+
+let getOneSite = (siteId) => {
+  return new Promise((resolve, reject) => {
+    Site.findOne({ _id: siteId })
+      .then((site) => resolve(site))
+      .catch((err) => reject(err));
+  });
+};
+
+let updateOneSite = (siteId, newSite) => {
+  return new Promise((resolve, reject) => {
+    Site.findByIdAndUpdate({ _id: siteId }, { $set: newSite })
+      .then((site) => resolve(site))
+      .catch((err) => reject(err));
+  });
+};
+
+let deleteOneSite = (siteId) => {
+  return new Promise((resolve, reject) => {
+    Site.findOneAndDelete({ _id: siteId })
+      .then((site) => resolve(site))
+      .catch((err) => reject(err));
+  });
+};
+
 module.exports = {
   insertSite,
   getSite,
+  getAllSites,
+  getOneSite,
+  updateOneSite,
+  deleteOneSite,
 };

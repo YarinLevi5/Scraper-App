@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 550px;
+}
+a {
+  text-align: center;
+  text-decoration: none;
+  font-size: 40px;
+  color: blueviolet;
+  width: 120px;
+  height: auto;
+  background-color: bisque;
+}

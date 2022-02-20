@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <title>Site</title>
+    <link rel="stylesheet" href="css/site.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="insertSite site">
+        <h1>Insert</h1>
+        <label>Site Name:</label>
+        <input type="text" placeholder="Name" data-role="name" />
+        <label>Site Url:</label>
+        <input type="text" placeholder="URL" data-role="url" />
+        <input type="button" value="Insert" data-role="insertBtn" />
+      </div>
+      <div class="findSite site">
+        <h1>Find</h1>
+        <label>Site Id</label>
+        <select id="findList"></select>
+      </div>
+      <div class="updateSite site">
+        <h1>Update</h1>
+        <select id="updateList"></select>
+        <label>Site Name</label>
+        <input type="text" placeholder="Name" data-role="update-name" />
+        <label>Site Url</label>
+        <input type="text" placeholder="URL" data-role="update-url" />
+        <input
+          type="button"
+          value="Update"
+          class="updateBtn"
+          data-role="updateBtn"
+        />
+      </div>
+      <div class="deleteSite site">
+        <h1>Delete</h1>
+        <label>Site Id</label>
+        <select id="deleteList"></select>
+      </div>
+    </div>
+  </body>
+  <script src="js/site.js"></script>
+</html>
