@@ -8,8 +8,9 @@ const scrapedEntitiesSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Site",
     required: true,
+    autopopulate: true,
   },
 });
+scrapedEntitiesSchema.plugin(require("mongoose-autopopulate"));
 const ScrapedEntity = mongoose.model("ScrapedEntity", scrapedEntitiesSchema);
-
 module.exports = ScrapedEntity;

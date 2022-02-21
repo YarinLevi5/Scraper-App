@@ -1,13 +1,12 @@
 let ScrapedEntity = require("../models/scraped_entities"),
   { getSite } = require("../controllers/siteController");
-axios = require("axios");
 
 let insertScrapedEntity = (siteId) => {
   return new Promise((resolve, reject) => {
     getSite(siteId)
       .then((scrapedEntity) => {
         let newScrapedEntity = new ScrapedEntity({
-          title: scrapedEntity.data.title,
+          title: scrapedEntity.title,
           site_id: siteId,
         });
         newScrapedEntity
@@ -15,11 +14,11 @@ let insertScrapedEntity = (siteId) => {
           .then((scrapedEntity) => resolve(scrapedEntity))
           .catch((err) => reject(err));
       })
-      .catch((err) => console.log(err));
+      .catch((err) => reject(err));
   });
 };
 
-let getScrapedEntities = (site_id) => {
+let getScrapedEntity = (site_id) => {
   return new Promise((resolve, reject) => {
     ScrapedEntity.findOne({ site_id })
       .then((scrape) => resolve(scrape))
@@ -27,7 +26,16 @@ let getScrapedEntities = (site_id) => {
   });
 };
 
+let getScrapedEntities = () => {
+  return new Promise((resolve, reject) => {
+    ScrapedEntity.find()
+      .then((scrape) => resolve(scrape))
+      .catch((err) => reject(err));
+  });
+};
+
 module.exports = {
   insertScrapedEntity,
+  getScrapedEntity,
   getScrapedEntities,
 };

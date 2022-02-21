@@ -2,6 +2,7 @@ let express = require("express"),
   router = express.Router(),
   {
     insertScrapedEntity,
+    getScrapedEntity,
     getScrapedEntities,
   } = require("../controllers/scrapedEntitiesController");
 
@@ -12,8 +13,14 @@ router.post("/:siteId", (req, res) => {
 });
 
 router.get("/scrapedEntity/:siteId", (req, res) => {
-  getScrapedEntities(req.params.siteId)
+  getScrapedEntity(req.params.siteId)
     .then((scrapedEntity) => res.status(200).json(scrapedEntity))
+    .catch((err) => res.status(404).json(err));
+});
+
+router.get("/", (req, res) => {
+  getScrapedEntities()
+    .then((scrapedEntities) => res.status(200).json(scrapedEntities))
     .catch((err) => res.status(404).json(err));
 });
 

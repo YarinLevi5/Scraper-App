@@ -1,0 +1,36 @@
+.wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 630px;
+}
+
+input,
+label {
+  font-size: 20px;
+  margin: 10px;
+  padding: 5px;
+  text-align: center;
+}
+
+.entity {
+  width: 300px;
+  height: 470px;
+  border: 2px solid gray;
+  text-align: center;
+  display: flex;
+  flex-flow: column;
+  padding: 10px;
+  box-shadow: inset 5px 10px 20px rgb(192, 192, 192);
+}
+.entity h1 {
+  color: blue;
+}
+
+#deleteList,
+#scrapedList {
+  width: 300px;
+  padding: 4px;
+  font-size: 15px;
+  text-align: center;
+}

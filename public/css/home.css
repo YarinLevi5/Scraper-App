@@ -9,7 +9,8 @@ a {
   text-decoration: none;
   font-size: 40px;
   color: blueviolet;
-  width: 120px;
+  width: 140px;
   height: auto;
   background-color: bisque;
+  margin: 20px;
 }

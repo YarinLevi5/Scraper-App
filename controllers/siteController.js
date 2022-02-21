@@ -1,5 +1,4 @@
 let Site = require("../models/site"),
-  axios = require("axios"),
   { parse } = require("node-html-parser");
 
 let insertSite = (siteName, siteUrl) => {
@@ -15,20 +14,27 @@ let insertSite = (siteName, siteUrl) => {
   });
 };
 
+let getOneSite = (siteId) => {
+  return new Promise((resolve, reject) => {
+    Site.findOne({ _id: siteId })
+      .then((site) => resolve(site))
+      .catch((err) => reject(err));
+  });
+};
+
 let getSite = (siteId) => {
   return new Promise((resolve, reject) => {
-    let arrayOfTitles = [];
     Site.findOne({ _id: siteId })
       .then((site) => {
         let scrapedObj = {
           site_id: siteId,
         };
-        axios
-          .get(`${site.siteUrl}`, { timeout: 5000 })
+        getOneSite(`${site.siteUrl}`)
           .then((data) => {
-            let response = parse(data.data);
-            let headLine = response.querySelector("title").innerText;
-            let title = response.querySelector("h2").innerText;
+            let response = parse(data.data),
+              headLine = response.querySelector("title").innerText,
+              title = response.querySelector("h2").innerText,
+              arrayOfTitles = [];
             arrayOfTitles.push(headLine, title);
             scrapedObj["title"] = arrayOfTitles;
             resolve(scrapedObj);
@@ -43,14 +49,6 @@ let getAllSites = () => {
   return new Promise((resolve, reject) => {
     Site.find()
       .then((sites) => resolve(sites))
-      .catch((err) => reject(err));
-  });
-};
-
-let getOneSite = (siteId) => {
-  return new Promise((resolve, reject) => {
-    Site.findOne({ _id: siteId })
-      .then((site) => resolve(site))
       .catch((err) => reject(err));
   });
 };

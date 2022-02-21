@@ -11,6 +11,6 @@ const sitesSchema = new mongoose.Schema({
     required: true,
   },
 });
-const Site = mongoose.model("Site", sitesSchema);
 
+const Site = mongoose.model("Site", sitesSchema);
 module.exports = Site;
