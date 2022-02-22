@@ -16,7 +16,9 @@ $(function () {
   $('[data-role="insertBtn"]').click(() => {
     let siteObject = insertNewSite();
     $.post("/site", siteObject, (data) => {
-      console.log(data);
+      $.post("/scrapedEntity/" + data._id, (scrape) => {
+        console.log(scrape);
+      });
       alert("Data was sent successfully");
       resetFields();
     });

@@ -1,13 +1,13 @@
-let express = require("express"),
-  router = express.Router(),
-  {
+let express = require("express");
+(router = express.Router()),
+  ({
     insertSite,
     getSite,
     getAllSites,
     getOneSite,
     updateOneSite,
     deleteOneSite,
-  } = require("../controllers/siteController");
+  } = require("../controllers/siteController"));
 
 router.post("/", (req, res) => {
   let { siteName, siteUrl } = req.body;

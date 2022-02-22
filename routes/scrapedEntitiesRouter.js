@@ -12,7 +12,7 @@ router.post("/:siteId", (req, res) => {
     .catch((err) => res.status(404).json(err));
 });
 
-router.get("/scrapedEntity/:siteId", (req, res) => {
+router.get("/:siteId", (req, res) => {
   getScrapedEntity(req.params.siteId)
     .then((scrapedEntity) => res.status(200).json(scrapedEntity))
     .catch((err) => res.status(404).json(err));

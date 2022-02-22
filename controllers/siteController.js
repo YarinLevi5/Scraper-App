@@ -1,4 +1,5 @@
 let Site = require("../models/site"),
+  axios = require("axios"),
   { parse } = require("node-html-parser");
 
 let insertSite = (siteName, siteUrl) => {
@@ -29,7 +30,8 @@ let getSite = (siteId) => {
         let scrapedObj = {
           site_id: siteId,
         };
-        getOneSite(`${site.siteUrl}`)
+        axios
+          .get(`${site.siteUrl}`, { timeout: 5000 })
           .then((data) => {
             let response = parse(data.data),
               headLine = response.querySelector("title").innerText,
@@ -39,7 +41,10 @@ let getSite = (siteId) => {
             scrapedObj["title"] = arrayOfTitles;
             resolve(scrapedObj);
           })
-          .catch((err) => reject(err));
+          .catch((err) => {
+            err = "There is no titles";
+            reject(err);
+          });
       })
       .catch((err) => reject(err));
   });

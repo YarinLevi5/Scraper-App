@@ -11,25 +11,26 @@ label {
   margin: 10px;
   padding: 5px;
   text-align: center;
+  color: black;
 }
 
 .entity {
-  width: 300px;
-  height: 470px;
+  width: 400px;
+  height: 500px;
   border: 2px solid gray;
   text-align: center;
   display: flex;
   flex-flow: column;
   padding: 10px;
   box-shadow: inset 5px 10px 20px rgb(192, 192, 192);
+  color: rgb(243, 77, 11);
 }
 .entity h1 {
   color: blue;
 }
 
-#deleteList,
 #scrapedList {
-  width: 300px;
+  width: 400px;
   padding: 4px;
   font-size: 15px;
   text-align: center;
