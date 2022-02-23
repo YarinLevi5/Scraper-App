@@ -1,9 +1,9 @@
-const express = require("express");
-app = express();
-(mongoose = require("mongoose")),
-  (port = process.env.PORT || 3000),
-  (siteRouter = require("./routes/siteRouter")),
-  (ScrapedEntityRouter = require("./routes/scrapedEntitiesRouter"));
+let express = require("express");
+let app = express();
+let mongoose = require("mongoose");
+let port = process.env.PORT || 3000;
+let siteRouter = require("./routes/siteRouter");
+let ScrapedEntityRouter = require("./routes/scrapedEntitiesRouter");
 
 app.use(express.json());
 app.use(
