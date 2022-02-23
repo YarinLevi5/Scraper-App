@@ -7,7 +7,7 @@ Use of ESlint and Perttier.
 
 - Express server with mongoose model,
 - MongoDB - CRUD operations,
-- Axios request for getting scraped titles fron sites.
+- Axios request for getting scraped titles from sites.
 - controllers, 
 - routes,
 - Ui
